@@ -3,9 +3,9 @@ require File.join(File.dirname(__FILE__), 'abstract-php-extension')
 class Php53Intl < AbstractPhp53Extension
   init
   homepage 'http://php.net/manual/en/book.intl.php'
-  url 'http://www.php.net/get/php-5.3.21.tar.bz2/from/this/mirror'
-  sha1 'd67d2569b4782cf2faa049f22b08819ad8b15009'
-  version '5.3.21'
+  url 'http://www.php.net/get/php-5.3.23.tar.bz2/from/this/mirror'
+  sha1 'fe9d84ada4747629f31051f9c689629261558056'
+  version '5.3.23'
 
   depends_on 'icu4c'
 
@@ -17,6 +17,7 @@ class Php53Intl < AbstractPhp53Extension
     safe_phpize
     system "./configure", "--prefix=#{prefix}",
                           phpconfig,
+                          "--with-icu-dir=#{Formula.factory('icu4c').opt_prefix}",
                           "--enable-intl"
     system "make"
     prefix.install "modules/intl.so"

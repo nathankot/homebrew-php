@@ -3,9 +3,9 @@ require File.join(File.dirname(__FILE__), 'abstract-php-extension')
 class Php53Mcrypt < AbstractPhp53Extension
   init
   homepage 'http://php.net/manual/en/book.mcrypt.php'
-  url 'http://www.php.net/get/php-5.3.21.tar.bz2/from/this/mirror'
-  sha1 'd67d2569b4782cf2faa049f22b08819ad8b15009'
-  version '5.3.21'
+  url 'http://www.php.net/get/php-5.3.23.tar.bz2/from/this/mirror'
+  sha1 'fe9d84ada4747629f31051f9c689629261558056'
+  version '5.3.23'
 
   depends_on 'mcrypt'
 
@@ -18,7 +18,7 @@ class Php53Mcrypt < AbstractPhp53Extension
     system "./configure", "--prefix=#{prefix}",
                           phpconfig,
                           "--disable-dependency-tracking",
-                          "--with-mcrypt=#{Formula.factory('mcrypt').prefix}"
+                          "--with-mcrypt=#{Formula.factory('mcrypt').opt_prefix}"
     system "make"
     prefix.install "modules/mcrypt.so"
     write_config_file unless build.include? "without-config-file"
